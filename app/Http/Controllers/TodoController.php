@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Todo;
+use Auth;
 
 class TodoController extends Controller
 {
@@ -13,6 +14,7 @@ class TodoController extends Controller
     public function __construct(Todo $instanceClass)
     {
         $this->todo = $instanceClass;
+        $this->middleware('auth');
     }
 
     /**
@@ -22,8 +24,7 @@ class TodoController extends Controller
      */
     public function index()
     {
-        //
-        $todos = $this->todo->all();
+        $todos = $this->todo->getAll(Auth::id());
         return view('todo.index' , compact('todos'));
     }
 
@@ -46,6 +47,7 @@ class TodoController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
+        $input['user_id'] = Auth::id();
         $this->todo->fill($input)->save();
         return redirect()->to('todo');
     }
@@ -98,6 +100,7 @@ class TodoController extends Controller
     public function destroy($id)
     {
         //
+        echo $id;
         $this->todo->find($id)->delete();
         return redirect()->to('todo');
     }

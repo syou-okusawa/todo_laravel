@@ -43,7 +43,7 @@ class TodoTest extends TestCase
         $response->assertStatus(200);
     }
     
-    /** @test */
+    /* @test */
     public function updateTest()
     {
         $this->put('todo/1',

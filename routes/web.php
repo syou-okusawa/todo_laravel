@@ -17,3 +17,8 @@ Route::get('/', function () {
 Route::resource('todo', 'TodoController');
 // Route::get('todo/create', 'TodoController@create');
 // Route::post('todo/store' , 'TodoController@store');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+

@@ -24,14 +24,16 @@
                     <td>{{{ $todo->created_at }}}</td>
                     <td>{{{ $todo->updated_at }}}</td>
                     <td><a class="btn btn-info" href="{{{ route('todo.edit', $todo->id) }}}">編集</a></td>
-                    {!! Form::open(['route'=>['todo.destroy',$todo->id],'method'=>'DELETE']) !!}
-                        <td>
-                            <button class="btn btn-danger" type="submit">削除</button>
-                        </td>
-                    {!! Form::close() !!}
+                    <td>
+                        {!! Form::open(['route'=>['todo.destroy',$todo->id] , 'method'=>'DELETE']) !!}
+
+                                <button class="btn btn-danger" type="submit">削除</button>
+
+                        {!! Form::close() !!}
+                    </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
 
-@endsection <!-- 追記 -->
+@endsection 

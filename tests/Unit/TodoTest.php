@@ -14,9 +14,14 @@ class TodoTest extends TestCase
      *
      * @return void
      */
-    /** @test */
+    public function testExample()
+    {
+        $this->assertTrue(true);
+    }
+
     public function todoModelInstanceTest()
     {
         $this->assertInstanceOf(Todo::class, new Todo());
     }
+
 }
